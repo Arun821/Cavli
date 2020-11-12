@@ -1,0 +1,44 @@
+<div class="body">
+
+    <mat-card class="example-card">
+        <mat-card-content>
+          <h2>SIGN UP</h2>
+                    <form [formGroup]="registerForm" (ngSubmit)="registerForm.valid && register()" novalidate>
+                      
+                      <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Email</mat-label>
+                        <input matInput id="email" [(ngModel)]="user.email" formControlName="email">
+                      </mat-form-field>
+                      <div class="error" *ngIf="registerForm.get('email').touched && registerForm.get('email').invalid">
+                        <span>*Email is required</span>
+                      </div>
+
+                      
+                      <mat-form-field appearance="fill" class="example-full-width">
+                        <mat-label>Enter your password</mat-label>
+                        <input matInput [type]="hide ? 'password' : 'text'" id="password" 
+                        [(ngModel)]="user.password" formControlName="password">
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                      </mat-form-field>
+                      <div class="error" *ngIf="registerForm.get('password').touched && registerForm.get('password').invalid">
+                        <span *ngIf="registerForm.controls.password.errors.passValidity; else elseBlock">
+                          Password contain minimum 6 characters one capital letter, one digit and a specil character
+                        </span>
+                        <ng-template #elseBlock>
+                         <span>*Password is required minimum 6 characters</span>
+                        </ng-template>
+                        
+                      </div>
+                      
+                      
+                      <button class="reset" mat-raised-button type="reset" >Clear</button>
+                      <button class="sign" mat-raised-button type="submit" [disabled]="!registerForm.valid">Sign Up</button>
+                      
+                    </form>
+                
+        </mat-card-content>
+    </mat-card>
+
+</div>

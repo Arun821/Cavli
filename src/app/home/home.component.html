@@ -1,0 +1,24 @@
+
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Dashboard</span>
+    <span class="example-spacer"></span>
+    
+    <button mat-icon-button class="example-icon logout" aria-label="Example icon-button with logout icon" (click)="logOut()">
+      <mat-icon class="logout">logout</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar> 
+<mat-card class="responsive-container">
+  <h2>Upload Image</h2>
+ 
+</mat-card>
+<mat-card class="image">
+  
+  <img  [src]="urllink"  alt="">
+  <input type="file" name="" class="btn btn-success btn-sm" (change)="selectFile($event)">
+  <input type="button" value="Upload" (click)="upload()">
+</mat-card>
+
+
+
